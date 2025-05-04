@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        :root {
+            --bg: rgb(240, 240, 240);
+            --text: rgb(51, 51, 51);
+            --card-bg: rgb(255, 255, 255);
+            --primary: rgb(74, 144, 226);
+        }
+        body {
+            margin: 0;
+            font-family: 'Lora', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        .dashboard {
+            max-width: 600px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .Weather-Today{
+            text-align: center;
+        }
+        .this-week{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .forecast {
+            display: flex;
+            gap: 16px;
+        }
+        .day-card {
+            flex: 1 1 30%;
+            background: #e6ecf3;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .forecast {
+                flex-direction: column;
+            }
+            .day-card {
+                width: 100%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="Dashboard">
+        <div class="Searchbox" align="center">
+            <input type="text" placeholder="&#128269;Search a city">
+        </div>
+        <div class="Weather-Today">
+            <center>
+                <h1>CHENNAI</h1>
+                <p id="datetime">DAY, DATE - TIME</p>
+                <img src="Sunny.png">
+                <p>30°C / 35°C SUNNY DAY</p>
+                
+            </center>
+        </div>
+        <div class="this-week">
+            <center>
+                <h2>WEATHER THIS WEEK</h2>
+            </center>
+        </div>
+        <div class="forecast">
+            <div class="day-card">
+                <p>Mon</p>
+                <img src="heavy rain.png">
+                <p>10°C / 15°C <br>HEAVY RAIN</p>
+            </div>
+            <div class="day-card">
+                <p>Tue</p>
+                <img src="moderate rain.png">
+                <p>15°C / 20°C <br> MODERATE RAIN</p>
+            </div>
+            <div class="day-card">
+                <p>Wed</p>
+                <img src="Stormy weather.png">
+                <p>10°C / 15°C <br> STORMY WEATHER</p>
+            </div>
+            <div class="day-card">
+                <p>Thu</p>
+                <img src="partly cloud.png">
+                <p>20°C / 25°C<br> PARTLY CLOUDY</p>
+            </div>
+            <div class="day-card">
+                <p>Fri</p>
+                <img src="rain cloud.png">
+                <p>18°C / 23°C <br> RAIN CLOUD</p>
+            </div>
+            <div class="day-card">
+                <p>Sat</p>
+                <img src="Sunny.png">
+                <p>28°C / 33°C<br> SUNNY DAY</p>
+            </div>
+    </div>
+    <script>
+        function updateDateTime() {
+          const now = new Date();
+          const options = { weekday: 'long', month: 'long', day: 'numeric' };
+          const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          document.getElementById('datetime').textContent =
+            `${now.toLocaleDateString(undefined, options)} — ${time}`;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+    </script>
+</body>
+</html>
